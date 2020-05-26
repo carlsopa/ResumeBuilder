@@ -1,0 +1,24 @@
+*{
+    margin:0;
+    padding:0;
+}
+.App{
+    width:90vw;
+    margin:5vw;
+}
+.BuilderPiece{
+    display: grid;
+}
+.SectionHeader{
+    grid-column:1/3;
+}
+#BasicPiece{
+    grid-template-rows: auto auto;
+}
+#GeneralPiece{
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+}
+#AddressPiece{
+    grid-template-columns:1fr 2fr;
+}
