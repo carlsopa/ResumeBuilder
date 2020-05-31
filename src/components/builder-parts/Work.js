@@ -4,7 +4,6 @@ import SingleJob from "./SingleJob";
 function Work(props) {
   const [WorkActive, setWorkActive] = useState(false);
   const [Jobs, setJobs] = useState(props.data);
-  console.log(props.resume[0]["work"]);
 
   useEffect(() => {
     const NewResume = props.resume[0];
@@ -20,6 +19,13 @@ function Work(props) {
       },
     ]);
   };
+  const HighLightAdd = (index) => {
+    const newHighLight = Jobs[0]["highlights"];
+    newHighLight.push("");
+    const newarr = [...Jobs];
+    newarr[index]["highlights"] = newHighLight;
+    setJobs(newarr);
+  };
   const JobRemove = (index) => {
     const newarr = [...Jobs];
     newarr.splice(index, 1);
@@ -29,6 +35,28 @@ function Work(props) {
   const update = (event, index) => {
     const newarr = [...Jobs];
     newarr[index][event.target.id] = event.target.value;
+    setJobs(newarr);
+  };
+  const summaryUpdate = (event, type, index, position) => {
+    const newarr = [...Jobs];
+    if (!type) {
+      newarr[index]["summary"] = event.target.value;
+    } else {
+      const newHighLight = Jobs[0]["highlights"];
+      newHighLight[position] = event.target.value;
+      newarr[index]["highlights"] = newHighLight;
+    }
+    setJobs(newarr);
+  };
+  const OptionUpdate = (section, value, index) => {
+    const newarr = [...Jobs];
+    if (section === "employed") {
+      newarr[index][section] = value;
+    } else if (section === "bulletDisplay") {
+      newarr[index][section] = value;
+    } else {
+      console.log("something went really wrong");
+    }
     setJobs(newarr);
   };
 
@@ -49,6 +77,9 @@ function Work(props) {
                 data={job}
                 remove={JobRemove}
                 change={update}
+                su={summaryUpdate}
+                hadd={HighLightAdd}
+                option={OptionUpdate}
               />
             );
           })}

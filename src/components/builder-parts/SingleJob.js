@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 
 function SingleJob(props) {
-  const [End, setEnd] = useState(false);
-  const [Bullet, setBullet] = useState(false);
-
-  const [SummaryText, setSummaryText] = useState("");
-  const [SummaryBullet, setSummaryBullet] = useState([]);
+  const [Employed, setEmployed] = useState(props.data.employed);
+  const [Bullet, setBullet] = useState(props.data.bulletDisplay);
 
   return (
     <div id="row" className="BuilderPiece" key={props.index}>
@@ -33,14 +30,16 @@ function SingleJob(props) {
           type="radio"
           name="employment"
           id="EmployedYes"
-          onChange={(e) => setEnd(false)}
+          checked={props.data.employed}
+          onChange={(e) => props.option("employed", true, props.index)}
         />
         <label htmlFor="EmployedNo">No</label>
         <input
           type="radio"
           name="employment"
           id="EmployedNo"
-          onChange={(e) => setEnd(true)}
+          checked={!props.data.employed}
+          onChange={(e) => props.option("employed", false, props.index)}
         />
       </div>
       <label htmlFor="startDate">Start Date(MM/YYYY):</label>
@@ -51,7 +50,7 @@ function SingleJob(props) {
         onChange={(e) => props.change(e, props.index)}
       />
       <label htmlFor="endDate">End Date(MM/YYYY):</label>
-      {End ? (
+      {!props.data.employed ? (
         <input
           id="endDate"
           type="text"
@@ -67,30 +66,50 @@ function SingleJob(props) {
           input="TextSummaryRadio"
           name="summary"
           type="radio"
-          onChange={(e) => setBullet(false)}
+          checked={!props.data.bulletDisplay}
+          onChange={(e) => props.option("bulletDisplay", false, props.index)}
         />
         <label htmlFor="BulletSummaryRadio">Bullet Summary</label>
         <input
           id="BulletSummaryRadio"
           name="summary"
           type="radio"
-          onChange={(e) => setBullet(true)}
+          checked={props.data.bulletDisplay}
+          onChange={(e) => props.option("bulletDisplay", true, props.index)}
         />
       </div>
       <label htmlFor="TextSummary">Description</label>
       <input
         type="text"
-        className={!Bullet ? "span" : "span hidden"}
+        className={!props.data.bulletDisplay ? "span" : "span hidden"}
         id="TextSummary"
+        value={props.data.summary}
+        onChange={(e) => props.su(e, props.data.bulletDisplay, props.index)}
       />
-      <div id="BulletSummary" className={Bullet ? "visible" : "hidden"}>
+      <div
+        id="BulletSummary"
+        className={props.data.bulletDisplay ? "visible" : "hidden"}
+      >
         <span>Summary</span>
         <ul>
           <li>
-            <input type="text" />
+            {props.data.highlights.map((value, position) => {
+              return (
+                <input
+                  value={value}
+                  onChange={(e) =>
+                    props.su(e, props.data.bulletDisplay, props.index, position)
+                  }
+                />
+              );
+            })}
           </li>
         </ul>
-        <div className="Button" id="RemoveProfile">
+        <div
+          className="Button"
+          id="RemoveProfile"
+          onClick={(e) => props.hadd(props.index)}
+        >
           Add
         </div>
       </div>
