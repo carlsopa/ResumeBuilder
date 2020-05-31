@@ -1,91 +1,83 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Address from "./Address";
 
 function Basic(props) {
-  return (
-    <div className="BuilderPiece" id="BasicPiece">
-      <div id="GeneralPiece">
-        <span class="SectionHeader">Basic info</span>
-        <label htmlFor="Name">Name</label>
-        <input
-          type="text"
-          id="Name"
-          value={props.data[0]}
-          onChange={(e) => props.set[0](e.target.value)}
-        />
-        <label htmlFor="Title">Title:</label>
-        <input
-          type="text"
-          id="Title"
-          value={props.data[1]}
-          onChange={(e) => props.set[1](e.target.value)}
-        />
-        <label htmlFor="Picture">Image:</label>
-        <input
-          type="file"
-          id="Picture"
-          value={props.data[2]}
-          onChange={(e) => props.set[2](e.target.value)}
-        />
-        <label htmlFor="Email">Email:</label>
-        <input
-          type="email"
-          id="Title"
-          value={props.data[3]}
-          onChange={(e) => props.set[3](e.target.value)}
-        />
-        <label htmlFor="Phone">Phone number:</label>
-        <input
-          type="text"
-          id="Phone"
-          value={props.data[4]}
-          onChange={(e) => props.set[4](e.target.value)}
-        />
-        <label htmlFor="Summary">Summary:</label>
-        <input
-          type="text"
-          id="Summary"
-          value={props.data[5]}
-          onChange={(e) => props.set[5](e.target.value)}
-        />
-      </div>
-      <div className="BuilderPiece" id="AddressPiece">
-        <span className="SectionHeader">Address</span>
+  const [BasicActive, setBasicActive] = useState(false);
+  const [Basic, setBasic] = useState(props.data);
 
-        <label htmlFor="Address">Address:</label>
-        <input
-          type="text"
-          id="Address"
-          value={props.data[6]}
-          onChange={(e) => props.set[6](e.target.value)}
-        />
-        <label htmlFor="SecondAddress">Apt/Suite:</label>
-        <input
-          type="text"
-          id="SecondAddress"
-          value={props.data[7]}
-          onChange={(e) => props.set[7](e.target.value)}
-        />
-        <label htmlFor="City">City:</label>
-        <input
-          type="text"
-          id="City"
-          value={props.data[8]}
-          onChange={(e) => props.set[8](e.target.value)}
-        />
-        <label htmlFor="State">State:</label>
-        <input
-          type="text"
-          id="State"
-          value={props.data[9]}
-          onChange={(e) => props.set[9](e.target.value)}
-        />
-        <label htmlFor="Zip">Zip code:</label>
-        <input
-          type="text"
-          id="Zip"
-          value={props.data[10]}
-          onChange={(e) => props.set[10](e.target.value)}
-        />
+  useEffect(() => {
+    const newResume = props.resume[0];
+    Object.keys(Basic).map((key) => {
+      return newResume["basics"][key] !== Basic[key]
+        ? (newResume["basics"][key] = Basic[key])
+        : null;
+    });
+
+    props.write();
+  }, [Basic]);
+
+  const Update = (event) => {
+    setBasic({ ...Basic, [event.target.id]: event.target.value });
+  };
+
+  return (
+    <div className="ParentPiece">
+      <div
+        className={BasicActive ? "header active" : "header"}
+        onClick={(e) => setBasicActive(!BasicActive)}
+      >
+        Basic info
+      </div>
+      <div className="content">
+        <div className="body" id="row">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            value={Basic.name}
+            onChange={(e) => Update(e)}
+          />
+          <label htmlFor="label">Title:</label>
+          <input
+            type="text"
+            id="label"
+            value={Basic.label}
+            onChange={(e) => Update(e)}
+          />
+          <label htmlFor="Picture">Image:</label>
+          <input
+            type="file"
+            id="Picture"
+            value={Basic.picture}
+            onChange={(e) => Update(e)}
+          />
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            value={Basic.email}
+            onChange={(e) => Update(e)}
+          />
+          <label htmlFor="phone">Phone number:</label>
+          <input
+            type="text"
+            id="phone"
+            value={Basic.phone}
+            onChange={(e) => Update(e)}
+          />
+          <label htmlFor="summary">Summary:</label>
+          <input
+            type="text"
+            id="summary"
+            value={Basic.summary}
+            onChange={(e) => Update(e)}
+          />
+          <Address
+            resume={props.resume}
+            data={props.data.location}
+            write={props.write}
+          />
+        </div>
       </div>
     </div>
   );

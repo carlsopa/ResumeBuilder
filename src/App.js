@@ -20,13 +20,25 @@ function App() {
       }
     }
   }, []);
+
+  const UpdateLocal=()=>{
+    localStorage.setItem("My-Resume",JSON.stringify(Resume));
+  }
+  useEffect(()=>{console.log("update")},[Resume])
+  const AddField=()=>{
+
+  }
   return (
     <div className="App">
       <header>Resume Builder</header>
+      {Resume.length!==0?(
       <div className="builder">
-        <ResumeBuilder data={Resume} />
+        
+        <ResumeBuilder resume={[Resume,setResume]} data={Resume} write={UpdateLocal} />
         <ResumeDisplay data={Resume} />
-      </div>
+
+      </div>):null
+}
     </div>
   );
 }
