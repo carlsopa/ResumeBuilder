@@ -3,26 +3,25 @@ import React, { useState } from "react";
 function SingleJob(props) {
   const [End, setEnd] = useState(false);
   const [Bullet, setBullet] = useState(false);
-  const [Company, setCompany] = useState(props.data.company);
-  const [Position, setPosition] = useState(props.data.position);
-  const [StartDate, setStartDate] = useState(props.data.startDate);
-  const [EndDate, setEndDate] = useState(props.data.endDate);
+
   const [SummaryText, setSummaryText] = useState("");
   const [SummaryBullet, setSummaryBullet] = useState([]);
 
   return (
     <div id="row" className="BuilderPiece" key={props.index}>
-      <label htmlFor="Company">Company:</label>
+      <label htmlFor="company">Company:</label>
       <input
         type="text"
-        value={Company}
-        onChange={(e) => setCompany(e.target.value)}
+        id="company"
+        value={props.data.company}
+        onChange={(e) => props.change(e, props.index)}
       />
-      <label htmlFor="Position">Position:</label>
+      <label htmlFor="position">Position:</label>
       <input
         type="text"
-        value={Position}
-        onChange={(e) => setPosition(e.target.value)}
+        id="position"
+        value={props.data.position}
+        onChange={(e) => props.change(e, props.index)}
       />
       <div className="Button" id="RemoveProfile">
         Remove
@@ -44,23 +43,23 @@ function SingleJob(props) {
           onChange={(e) => setEnd(true)}
         />
       </div>
-      <label htmlFor="StartDate">Start Date(MM/YYYY):</label>
+      <label htmlFor="startDate">Start Date(MM/YYYY):</label>
       <input
-        id="StartDate"
+        id="startDate"
         type="text"
-        value={StartDate}
-        onChange={(e) => setStartDate(e.target.value)}
+        value={props.data.startDate}
+        onChange={(e) => props.change(e, props.index)}
       />
-      <label htmlFor="EndDate">End Date(MM/YYYY):</label>
+      <label htmlFor="endDate">End Date(MM/YYYY):</label>
       {End ? (
         <input
-          id="EndDate"
+          id="endDate"
           type="text"
-          value={EndDate}
-          onChange={(e) => setEndDate(e.target.value)}
+          value={props.data.endDate}
+          onChange={(e) => props.change(e, props.index)}
         />
       ) : (
-        <input id="EndDate" type="text" readOnly />
+        <input id="endDate" type="text" value="" readOnly />
       )}
       <div className="span" id="SummarySection">
         <label htmlFor="TextSummaryRadio">Text Summary</label>
@@ -95,7 +94,13 @@ function SingleJob(props) {
           Add
         </div>
       </div>
-      <div className="Button" id="RemoveProfile" onClick={(e)=>{props.remove(props.index)}}>
+      <div
+        className="Button"
+        id="RemoveProfile"
+        onClick={(e) => {
+          props.remove(props.index);
+        }}
+      >
         Remove
       </div>
     </div>
