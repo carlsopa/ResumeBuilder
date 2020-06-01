@@ -28,7 +28,7 @@ function SingleJob(props) {
         <label htmlFor="EmployedYes">Yes</label>
         <input
           type="radio"
-          name="employment"
+          name={"employment"+props.index}
           id="EmployedYes"
           checked={props.data.employed}
           onChange={(e) => props.option("employed", true, props.index)}
@@ -36,7 +36,7 @@ function SingleJob(props) {
         <label htmlFor="EmployedNo">No</label>
         <input
           type="radio"
-          name="employment"
+          name={"employment"+props.index}
           id="EmployedNo"
           checked={!props.data.employed}
           onChange={(e) => props.option("employed", false, props.index)}
@@ -64,7 +64,7 @@ function SingleJob(props) {
         <label htmlFor="TextSummaryRadio">Text Summary</label>
         <input
           input="TextSummaryRadio"
-          name="summary"
+          name={"summary"+props.index}
           type="radio"
           checked={!props.data.bulletDisplay}
           onChange={(e) => props.option("bulletDisplay", false, props.index)}
@@ -72,7 +72,7 @@ function SingleJob(props) {
         <label htmlFor="BulletSummaryRadio">Bullet Summary</label>
         <input
           id="BulletSummaryRadio"
-          name="summary"
+          name={"summary"+props.index}
           type="radio"
           checked={props.data.bulletDisplay}
           onChange={(e) => props.option("bulletDisplay", true, props.index)}
@@ -93,7 +93,7 @@ function SingleJob(props) {
         <span>Summary</span>
         <ul>
           <li>
-            {props.data.highlights.map((value, position) => {
+            {props.data.highlights?props.data.highlights.map((value, position) => {
               return (
                 <input
                   value={value}
@@ -102,7 +102,12 @@ function SingleJob(props) {
                   }
                 />
               );
-            })}
+            }):<input
+            value={""}
+            onChange={(e) =>
+              props.su(e, props.data.bulletDisplay, props.index)
+            }
+          />}
           </li>
         </ul>
         <div

@@ -29,7 +29,9 @@
       "summary": "Description...",
       "highlights": [
         "Started the company"
-      ]
+      ],
+      "bulletDisplay":false,
+      "employed":true
     }],
     "volunteer": [{
       "organization": "Organization",
@@ -44,6 +46,7 @@
     }],
     "education": [{
       "institution": "University",
+      "location":"Location",
       "area": "Software Development",
       "studyType": "Bachelor",
       "startDate": "2011-01-01",

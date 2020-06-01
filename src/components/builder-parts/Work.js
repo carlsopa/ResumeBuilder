@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SingleJob from "./SingleJob";
+import SingleJob from "./single-parts/SingleJob";
 
 function Work(props) {
   const [WorkActive, setWorkActive] = useState(false);
@@ -12,15 +12,28 @@ function Work(props) {
   }, [Jobs]);
 
   const JobAdd = (event) => {
+    console.log(typeof(props.resume[0]))
     setJobs((prev) => [
       ...prev,
+      
       {
-        work: props.resume[0]["work"],
+        "company": "",
+        "position": "",
+        "website": "",
+        "startDate": "",
+        "endDate": "",
+        "summary": "",
+        "highlights": [
+          ""
+        ],
+        "bulletDisplay":false,
+        "employed":false
       },
+      
     ]);
   };
   const HighLightAdd = (index) => {
-    const newHighLight = Jobs[0]["highlights"];
+    const newHighLight = Jobs[index]["highlights"];
     newHighLight.push("");
     const newarr = [...Jobs];
     newarr[index]["highlights"] = newHighLight;
@@ -42,14 +55,13 @@ function Work(props) {
     if (!type) {
       newarr[index]["summary"] = event.target.value;
     } else {
-      const newHighLight = Jobs[0]["highlights"];
-      newHighLight[position] = event.target.value;
-      newarr[index]["highlights"] = newHighLight;
+      newarr[index]["highlights"][position] = event.target.value;
     }
     setJobs(newarr);
   };
   const OptionUpdate = (section, value, index) => {
     const newarr = [...Jobs];
+    console.log(newarr[index])
     if (section === "employed") {
       newarr[index][section] = value;
     } else if (section === "bulletDisplay") {

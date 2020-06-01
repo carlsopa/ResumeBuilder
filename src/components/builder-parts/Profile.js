@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SingleProfile from "./SingleProfile";
+import SingleProfile from "./single-parts/SingleProfile";
 
 function Profile(props) {
   const [ProfileActive, setProfileActive] = useState(false);
