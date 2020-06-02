@@ -2,7 +2,7 @@ import React from "react";
 
 function SingleReference(props) {
   return (
-    <div key={props.index} className="BuilderPiece" id="row">
+    <div className="BuilderPiece" id="row">
       <label htmlFor="name">Name:</label>
       <input
         data-id={props.index}

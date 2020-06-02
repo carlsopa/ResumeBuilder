@@ -2,7 +2,7 @@ import React from "react";
 
 function SingleAward(props) {
   return (
-    <div>
+    <div className="BuilderPiece">
       <label htmlFor="title">Award</label>
       <input
         type="text"

@@ -2,7 +2,7 @@ import React from "react";
 
 function SingleInterest(props) {
   return (
-    <div>
+    <div className="BuilderPiece">
       <ul>
         <li>
           <label htmlFor="name">Interest Name:</label>
