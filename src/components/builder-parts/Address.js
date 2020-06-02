@@ -12,6 +12,7 @@ function Address(props) {
     });
 
     props.write();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [AddressData]);
 
   const AddressUpdate = (event) => {

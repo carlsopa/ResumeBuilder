@@ -9,6 +9,7 @@ function Work(props) {
     const NewResume = props.resume[0];
     NewResume["work"] = Jobs;
     props.write();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Jobs]);
 
   const JobAdd = (event) => {
@@ -86,6 +87,7 @@ function Work(props) {
             return (
               <SingleJob
                 index={index}
+                key={index}
                 data={job}
                 remove={JobRemove}
                 change={update}

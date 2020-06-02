@@ -25,9 +25,7 @@ function App() {
     localStorage.setItem("My-Resume",JSON.stringify(Resume));
   }
   useEffect(()=>{console.log("update")},[Resume])
-  const AddField=()=>{
 
-  }
   return (
     <div className="App">
       <header>Resume Builder</header>

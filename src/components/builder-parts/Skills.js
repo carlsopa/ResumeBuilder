@@ -9,6 +9,7 @@ function Skills(props) {
     const NewResume = props.resume[0];
     NewResume["skills"] = SkillsData;
     props.write();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [SkillsData]);
 
   const SkillSetAdd = (index) => {
@@ -58,6 +59,7 @@ function Skills(props) {
           {SkillsData.map((data, index) => {
             return (
               <SingleSkill
+                key={index}
                 index={index}
                 data={data}
                 AddKeyWord={SkillSetAdd}

@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import Basic from "./builder-parts/Basic";
 import Profile from "./builder-parts/Profile";
 import Work from "./builder-parts/Work";
 import Skills from "./builder-parts/Skills";
 import Education from "./builder-parts/Education";
+import Awards from "./builder-parts/Awards";
+import Interests from "./builder-parts/Interests";
+import References from "./builder-parts/Reference";
 
 function ResumeBuilder(props) {
-  const [BasicData] = useState(props.data.basics);
-  const [EmploymentData] = useState(props.data.work);
-  const [ProfileData] = useState(props.data.basics.profiles);
-  const [SkillsData] = useState(props.data.skills);
+
   return (
     <div>
       <h1>Resume Builder</h1>
@@ -39,6 +39,19 @@ function ResumeBuilder(props) {
           data={props.data.education}
           write={props.write}
         />
+        <Awards
+        resume={props.resume}
+        data={props.data.awards}
+        write={props.write}
+        />
+        <Interests
+        resume={props.resume}
+        data={props.data.interests}
+        write={props.write}/>
+        <References
+        resume={props.resume}
+        data={props.data.references}
+        write={props.write}/>
       </div>
     </div>
   );

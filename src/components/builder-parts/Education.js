@@ -9,6 +9,7 @@ function Education(props) {
     const NewResume = props.resume[0];
     NewResume["education"] = EducationData;
     props.write();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [EducationData]);
 
   const EducationAdd = () => {
@@ -63,6 +64,7 @@ function Education(props) {
           {EducationData.map((data, index) => {
             return (
               <SingleEducation
+                key={index}
                 index={index}
                 data={data}
                 EducationUpdate={EducationUpdate}

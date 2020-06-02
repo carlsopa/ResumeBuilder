@@ -14,6 +14,7 @@ function Basic(props) {
     });
 
     props.write();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Basic]);
 
   const Update = (event) => {

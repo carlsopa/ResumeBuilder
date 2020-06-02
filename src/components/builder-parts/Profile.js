@@ -9,6 +9,7 @@ function Profile(props) {
     const newResume = props.resume[0];
     newResume["basics"]["profiles"] = Profiles;
     props.write();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Profiles]);
 
   const ProfileAdd = (event) => {
@@ -38,6 +39,7 @@ function Profile(props) {
           {Profiles.map((data, index) => {
             return (
               <SingleProfile
+                key={index}
                 data={data}
                 index={index}
                 change={update}

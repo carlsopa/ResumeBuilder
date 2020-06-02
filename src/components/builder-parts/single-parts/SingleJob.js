@@ -1,9 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 function SingleJob(props) {
-  const [Employed, setEmployed] = useState(props.data.employed);
-  const [Bullet, setBullet] = useState(props.data.bulletDisplay);
-
   return (
     <div id="row" className="BuilderPiece" key={props.index}>
       <label htmlFor="company">Company:</label>
@@ -28,7 +25,7 @@ function SingleJob(props) {
         <label htmlFor="EmployedYes">Yes</label>
         <input
           type="radio"
-          name={"employment"+props.index}
+          name={"employment" + props.index}
           id="EmployedYes"
           checked={props.data.employed}
           onChange={(e) => props.option("employed", true, props.index)}
@@ -36,7 +33,7 @@ function SingleJob(props) {
         <label htmlFor="EmployedNo">No</label>
         <input
           type="radio"
-          name={"employment"+props.index}
+          name={"employment" + props.index}
           id="EmployedNo"
           checked={!props.data.employed}
           onChange={(e) => props.option("employed", false, props.index)}
@@ -64,7 +61,7 @@ function SingleJob(props) {
         <label htmlFor="TextSummaryRadio">Text Summary</label>
         <input
           input="TextSummaryRadio"
-          name={"summary"+props.index}
+          name={"summary" + props.index}
           type="radio"
           checked={!props.data.bulletDisplay}
           onChange={(e) => props.option("bulletDisplay", false, props.index)}
@@ -72,7 +69,7 @@ function SingleJob(props) {
         <label htmlFor="BulletSummaryRadio">Bullet Summary</label>
         <input
           id="BulletSummaryRadio"
-          name={"summary"+props.index}
+          name={"summary" + props.index}
           type="radio"
           checked={props.data.bulletDisplay}
           onChange={(e) => props.option("bulletDisplay", true, props.index)}
@@ -93,21 +90,31 @@ function SingleJob(props) {
         <span>Summary</span>
         <ul>
           <li>
-            {props.data.highlights?props.data.highlights.map((value, position) => {
-              return (
-                <input
-                  value={value}
-                  onChange={(e) =>
-                    props.su(e, props.data.bulletDisplay, props.index, position)
-                  }
-                />
-              );
-            }):<input
-            value={""}
-            onChange={(e) =>
-              props.su(e, props.data.bulletDisplay, props.index)
-            }
-          />}
+            {props.data.highlights ? (
+              props.data.highlights.map((value, position) => {
+                return (
+                  <input
+                    key={position}
+                    value={value}
+                    onChange={(e) =>
+                      props.su(
+                        e,
+                        props.data.bulletDisplay,
+                        props.index,
+                        position
+                      )
+                    }
+                  />
+                );
+              })
+            ) : (
+              <input
+                value={""}
+                onChange={(e) =>
+                  props.su(e, props.data.bulletDisplay, props.index)
+                }
+              />
+            )}
           </li>
         </ul>
         <div

@@ -69,7 +69,7 @@ function SingleEducation(props) {
       <ul>
         {props.data.courses.map((data, index) => {
           return (
-            <li>
+            <li key={index}>
               <input
                 type="text"
                 value={data}
