@@ -53,9 +53,7 @@
   margin:1rem auto;
   /* grid-template-rows: auto auto; */
 }
-#ProfilePiece{
-    /* grid-template-rows: repeat(3, auto); */
-}
+
 #AddProfile{
     grid-column:2;
     grid-row:1;
