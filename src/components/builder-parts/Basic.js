@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import Address from "./Address";
 
 function Basic(props) {
@@ -20,12 +21,26 @@ function Basic(props) {
   const Update = (event) => {
     setBasic({ ...Basic, [event.target.id]: event.target.value });
   };
+  const fileUpload=(event)=>{
+    console.log(event.target.files[0])
+    const file = {selectedFile: event.target.files[0],loaded:0}
+    const data = new FormData();
+    console.log(file)
+    data.append('file',file)
+    console.log(data)
+    axios.post("/images",data,{})
+    .then(res=>{
+      console.log(res.statusText)
+    })
+    //Update(event);
+  }
+
 
   return (
     <div className="ParentPiece">
       <div
         className={BasicActive ? "header active" : "header"}
-        onClick={(e) => setBasicActive(!BasicActive)}
+        onClick={(e) => {return(setBasicActive(!BasicActive),props.display(e))}}
       >
         Basic info
       </div>
@@ -45,12 +60,12 @@ function Basic(props) {
             value={Basic.label}
             onChange={(e) => Update(e)}
           />
-          <label htmlFor="Picture">Image:</label>
+          <label htmlFor="picture">Image:</label>
           <input
             type="file"
-            id="Picture"
+            id="picture"
             value={Basic.picture}
-            onChange={(e) => Update(e)}
+            onChange={(e) => fileUpload(e)}
           />
           <label htmlFor="email">Email:</label>
           <input

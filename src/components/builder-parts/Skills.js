@@ -50,7 +50,7 @@ function Skills(props) {
     <div className="ParentPiece">
       <div
         className={SkillsActive ? "header active" : "header"}
-        onClick={(e) => setSkillsActive(!SkillsActive)}
+        onClick={(e) => {return(setSkillsActive(!SkillsActive),props.display(e))}}
       >
         Skill Set
       </div>

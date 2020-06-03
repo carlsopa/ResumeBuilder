@@ -55,7 +55,7 @@ function Education(props) {
     <div className="ParentPiece">
       <div
         className={EducationActive ? "header active" : "header"}
-        onClick={(e) => setEducationActive(!EducationActive)}
+        onClick={(e) => {return(setEducationActive(!EducationActive),props.display(e))}}
       >
         Education
       </div>

@@ -37,7 +37,7 @@ function References(props) {
     <div className="ParentPiece">
       <div
         className={ReferenceActive ? "header active" : "header"}
-        onClick={(e) => setReferenceActive(!ReferenceActive)}
+        onClick={(e) => {return(setReferenceActive(!ReferenceActive),props.display(e))}}
       >
         References
       </div>

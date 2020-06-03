@@ -38,7 +38,7 @@ function Awards(props) {
     <div className="ParentPiece">
       <div
         className={AwardActive ? "header active" : "header"}
-        onClick={(e) => setAwardActive(!AwardActive)}
+        onClick={(e) => {return(setAwardActive(!AwardActive),props.display(e))}}
       >
         Awards
       </div>

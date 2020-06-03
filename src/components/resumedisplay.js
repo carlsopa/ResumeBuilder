@@ -1,13 +1,15 @@
 import React from "react";
+import user from "../images/user.svg";
 
 function ResumeDisplay(props) {
-  console.log(props.data);
   return (
-    <div>
+    <div id="display" className={!props.display[0] ? "hidden" : null}>
       <h1>Resume Display</h1>
-      <img src={props.data.basics.picture} alt="profile" />
-      <span>{props.data.basics.name}</span>
-      <span>{props.data.basics.label}</span>
+      <div id="profile">
+        <img id="profilepic" src={user} alt="profile" />
+        <span id="name">{props.data.basics.name}</span>
+        <span id="title">{props.data.basics.label}</span>
+      </div>
       <div id="contact">
         <div id="address">
           <span>{props.data.basics.location.address}</span>
@@ -25,21 +27,23 @@ function ResumeDisplay(props) {
         </div>
       </div>
       <div id="background">
-        <span>About</span>
-        <span>{props.data.basics.summary}</span>
-        <span>Experience</span>
+        <span id="about">{props.data.basics.summary}</span>
+        <span class="heading">Experience</span>
         {props.data.work.map((data, index) => {
           return (
-            <div key={index}>
-              <span>{data.position}</span>
-              <span>{data.company}</span>
-              <span>{data.startDate}</span>
-              <span>{data.endDate}</span>
-              <span>{data.summary}</span>
+            <div class="job" key={index}>
+              <span className="title">{data.position}</span>
+              <span id="company">{data.company}</span>
+              <span id="employmenttime">
+                {data.startDate} - {data.endDate}
+              </span>
+              <span id="summary">{data.summary}</span>
               <div id="highlights">
-                <ul>
+                <ul id="highlights">
                   {data.highlights.map((data, index) => (
-                    <li key={index}>{data}</li>
+                    <li id="singlehighlight" key={index}>
+                      {data}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -47,63 +51,78 @@ function ResumeDisplay(props) {
           );
         })}
       </div>
-      <div id="skills">
+      <div id="skillSection">
+        <span id="skillheading" className="heading">
+          Skills
+        </span>
         {props.data.skills.map((data, index) => {
-          return <div key="index">
-              <span>{data.name}</span>
+          return (
+            <div className="skills" key="index">
+              <span className="title">{data.name}</span>
               <ul>
-                  {data.keywords.map((data,index)=>{
-                      return(<li key={index}>{data}</li>)
-                  })}
+                {data.keywords.map((data, index) => {
+                  return <li key={index}>{data}</li>;
+                })}
               </ul>
-          </div>;
+            </div>
+          );
         })}
       </div>
-      <div id="education">
-          {props.data.education.map((data,index)=>{
-              return(
-                  <div key={index}>
-                      <span>{data.area}</span>
-                      <span>{data.studyType}</span>
-                      <span>{data.location}</span>
-                      <span>{data.startDate} - {data.endDate}</span>
-                      </div>
-              )
-          })}
-      </div>
-      <div id="awards">
-      {props.data.awards.map((data,index)=>{
-              return(
-                  <div key={index}>
-                      <span>{data.title}</span>
-                      <span>{data.awarder}</span>
-                      <span>{data.date}</span>
-                      <span>{data.summary}</span>
-                      </div>
-              )
-          })}
-      </div>
-      <div id="interests">
-      {props.data.interests.map((data, index) => {
-          return <div key="index">
-              <span>{data.name}</span>
-              <ul>
-                  {data.keywords.map((data,index)=>{
-                      return(<li key={index}>{data}</li>)
-                  })}
-              </ul>
-          </div>;
+      <div id="educationSection">
+        <span className="heading">Education</span>
+        {props.data.education.map((data, index) => {
+          return (
+            <div className="education" key={index}>
+              <span id="degree" className="title">
+                {data.area}
+              </span>
+              <span>{data.studyType}</span>
+              <span id="location">{data.location}</span>
+              <span id="date">
+                {data.startDate} - {data.endDate}
+              </span>
+            </div>
+          );
         })}
       </div>
-      <div id="references">
-      {props.data.references.map((data,index)=>{
-              return(
-                  <div key={index}>
-                      <span>{data.name}</span>
-                      <span>{data.reference}</span>
-                      </div>
-              )
-          })}
+      <div id="awardSection">
+        <span className="heading">Awards</span>
+        {props.data.awards.map((data, index) => {
+          return (
+            <div id="award" key={index}>
+              <span className="title">{data.title}</span>
+              <span>{data.awarder}</span>
+              <span>{data.date}</span>
+              <span id="awardDescription">{data.summary}</span>
+            </div>
+          );
+        })}
+      </div>
+      <div id="interestSection">
+        <span id="interestHeading" className="heading">Interests</span>
+        {props.data.interests.map((data, index) => {
+          return (
+            <div className="skills" key="index">
+              <span className="title">{data.name}</span>
+              <ul>
+                {data.keywords.map((data, index) => {
+                  return <li key={index}>{data}</li>;
+                })}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+      <div id="referenceSection">
+        <span className="heading">References</span>
+        {props.data.references.map((data, index) => {
+          return (
+            <div key={index}>
+              <span className="title">{data.name}</span>
+              <span id="reference">{data.reference}</span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

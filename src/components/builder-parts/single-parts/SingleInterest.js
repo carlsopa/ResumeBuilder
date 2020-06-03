@@ -2,9 +2,9 @@ import React from "react";
 
 function SingleInterest(props) {
   return (
-    <div className="BuilderPiece">
+    <div >
       <ul>
-        <li>
+        <li className="SingleInstance">
           <label htmlFor="name">Interest Name:</label>
           <input
             type="text"

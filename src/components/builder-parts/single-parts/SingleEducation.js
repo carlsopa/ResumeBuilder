@@ -2,7 +2,7 @@ import React from "react";
 
 function SingleEducation(props) {
   return (
-    <div className="BuilderPiece">
+    <div className="SingleInstance">
       <label htmlFor="institution">University</label>
       <input
         type="text"

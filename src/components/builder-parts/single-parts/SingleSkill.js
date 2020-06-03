@@ -2,9 +2,9 @@ import React from "react";
 
 function SingleSkill(props) {
   return (
-    <div>
+    <div >
       <ul>
-        <li>
+        <li className="SingleInstance">
           <label htmlFor="name">Skill Name:</label>
           <input
             type="text"

@@ -2,8 +2,8 @@ import React from "react";
 
 function SingleAward(props) {
   return (
-    <div className="BuilderPiece">
-      <label htmlFor="title">Award</label>
+    <div className="SingleInstance">
+      <label htmlFor="title">Award<br/>
       <input
         type="text"
         id="title"
@@ -11,7 +11,7 @@ function SingleAward(props) {
         onChange={(e) => {
           props.Update(e, props.index);
         }}
-      />
+      /></label>
       <label htmlFor="awarder">Awarder</label>
       <input
         type="text"

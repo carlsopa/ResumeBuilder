@@ -77,7 +77,7 @@ function Work(props) {
     <div className="ParentPiece">
       <div
         className={WorkActive ? "header active" : "header"}
-        onClick={(e) => setWorkActive(!WorkActive)}
+        onClick={(e) => {return(setWorkActive(!WorkActive),props.display(e))}}
       >
         Work History
       </div>
@@ -94,6 +94,7 @@ function Work(props) {
                 su={summaryUpdate}
                 hadd={HighLightAdd}
                 option={OptionUpdate}
+                display={props.display}
               />
             );
           })}

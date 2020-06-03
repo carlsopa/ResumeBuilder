@@ -2,7 +2,7 @@ import React from "react";
 
 function SingleProfile(props) {
   return (
-    <div key={props.index} className="BuilderPiece" id="row">
+    <div key={props.index} className="SingleInstance" id="row">
       <label htmlFor="network">Network:</label>
       <input
         data-id={props.index}

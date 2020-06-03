@@ -29,7 +29,7 @@ function Profile(props) {
     <div className="ParentPiece">
       <div
         className={ProfileActive ? "header active" : "header"}
-        onClick={(e) => setProfileActive(!ProfileActive)}
+        onClick={(e) => {return(setProfileActive(!ProfileActive),props.display(e))}}
         id="profile"
       >
         Profiles

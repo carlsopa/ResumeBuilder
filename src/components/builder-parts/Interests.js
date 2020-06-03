@@ -49,7 +49,7 @@ function Interests(props) {
     <div className="ParentPiece">
       <div
         className={InterestActive ? "header active" : "header"}
-        onClick={(e) => setInterestActive(!InterestActive)}
+        onClick={(e) => {return(setInterestActive(!InterestActive),props.display(e))}}
       >
         Interests
       </div>
