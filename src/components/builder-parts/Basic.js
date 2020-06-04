@@ -81,10 +81,10 @@ function Basic(props) {
             value={Basic.phone}
             onChange={(e) => Update(e)}
           />
-          <label htmlFor="summary">Summary:</label>
+          <label htmlFor="design.summary">Summary:</label>
           <input
             type="text"
-            id="summary"
+            id="design.summary"
             value={Basic.summary}
             onChange={(e) => Update(e)}
           />

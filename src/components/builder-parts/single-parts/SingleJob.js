@@ -27,16 +27,13 @@ function SingleJob(props) {
             value={props.data.company}
             onChange={(e) => props.change(e, props.index)}
           />
-          <label htmlFor="position">Position:</label>
+          <label htmlFor="design.position">Position:</label>
           <input
             type="text"
-            id="position"
+            id="design.position"
             value={props.data.position}
             onChange={(e) => props.change(e, props.index)}
           />
-          <div className="Button" id="RemoveProfile">
-            Remove
-          </div>
           <div className="span">
             Are you still employed
             <label htmlFor="EmployedYes">Yes</label>
@@ -113,6 +110,7 @@ function SingleJob(props) {
                   props.data.highlights.map((value, position) => {
                     return (
                       <input
+                      type="text"
                         key={position}
                         value={value}
                         onChange={(e) =>
@@ -141,7 +139,7 @@ function SingleJob(props) {
               id="RemoveProfile"
               onClick={(e) => props.hadd(props.index)}
             >
-              Add
+              Add detail
             </div>
           </div>
           <div
@@ -151,7 +149,7 @@ function SingleJob(props) {
               props.remove(props.index);
             }}
           >
-            Remove
+            Remove Job
           </div>
           {
       //   </div>

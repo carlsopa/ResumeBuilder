@@ -1,4 +1,5 @@
 import React from "react";
+import design from '../design/viewer.css';
 import user from "../images/user.svg";
 
 function ResumeDisplay(props) {

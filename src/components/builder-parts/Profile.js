@@ -30,7 +30,7 @@ function Profile(props) {
       <div
         className={ProfileActive ? "header active" : "header"}
         onClick={(e) => {return(setProfileActive(!ProfileActive),props.display(e))}}
-        id="profile"
+        id="design.profile"
       >
         Profiles
       </div>

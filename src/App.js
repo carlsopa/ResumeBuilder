@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 //import "./App.css";
-import './design/viewer.css';
+// import './design/viewer.css';
 import './design/buildera.css'
 import ResumeBuilder from "./components/resumebuilder";
 import ResumeDisplay from "./components/resumedisplay";

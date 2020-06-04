@@ -5,6 +5,9 @@ ul {
   font-size: 1.6rem;
   font-weight: 900;
 }
+#display{
+    overflow: scroll;
+}
 .job {
   display: grid;
   grid-template-columns: auto auto auto;

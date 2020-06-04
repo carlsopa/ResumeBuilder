@@ -19,16 +19,17 @@
       display:inline-block;
       font-size:.75rem;
   }
-  input{
+  input[type=text]{
       font-size:1.25rem;
       margin:5px 0 5px 15px;
       border-radius:20px;
       padding:2px 0 2px 10px;
+      width:80vw;
   }
   
   .builder{
       display: grid;
-      grid-template-rows:95% 5%;
+      grid-template-rows:90vh 5vh;
   }
   .hidden {
     display: none;
@@ -61,6 +62,9 @@
       margin: .5rem 3rem .5rem 1rem;
       position: relative;
       font-weight: 900;
+  }
+  #editor{
+      overflow: scroll;
   }
   /* .header.active + .content{
       max-height:1000px;

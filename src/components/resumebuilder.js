@@ -21,7 +21,7 @@ function ResumeBuilder(props) {
   }
 
   return (
-    <div className={props.display[0]?"hidden":null}>
+    <div id="editor" className={props.display[0]?"hidden":null}>
       <h1>Resume Builder</h1>
       <div className="Accordion">
         <Basic
